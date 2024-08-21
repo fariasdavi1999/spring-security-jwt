@@ -8,19 +8,16 @@ import java.util.Date;
 import java.util.List;
 
 @Getter
+@Setter
 public class JWTObject {
-	@Setter
+
 	private String subject;
 
-	@Setter
 	private Date issuedAt;
 
-	@Setter
+
 	private Date expiration;
 
 	private List<String> roles = new ArrayList<>();
 
-	public void setRoles(List<String> roles) {
-		this.roles = roles;
-	}
 }
