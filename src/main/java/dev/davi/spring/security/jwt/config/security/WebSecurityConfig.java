@@ -21,7 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfig {
 
 	private static final String MANAGER = "MANAGER";
-	private static final String USER = "USERS";
+	private static final String USER = "USER";
 
 	private static final String[] OPENAPI_WHITELIST = {
 			"/v2/api-docs/**",
