@@ -7,11 +7,9 @@ import dev.davi.spring.security.jwt.config.security.jwt.JWTObject;
 import dev.davi.spring.security.jwt.model.User;
 import dev.davi.spring.security.jwt.model.dto.Login;
 import dev.davi.spring.security.jwt.model.dto.Session;
-import dev.davi.spring.security.jwt.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Base64;
 import java.util.Date;
 
 @Service
