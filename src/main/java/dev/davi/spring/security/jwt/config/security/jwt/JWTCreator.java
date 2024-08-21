@@ -1,8 +1,9 @@
 package dev.davi.spring.security.jwt.config.security.jwt;
 
 import dev.davi.spring.security.jwt.config.security.TokenConfig;
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.security.SignatureException;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Jwts;
 
 import java.util.List;
 
@@ -20,10 +21,8 @@ public class JWTCreator {
 
 
 	public static String createToken(String prefix, JWTObject jwtObject)
-			throws ExpiredJwtException,
-			       UnsupportedJwtException,
-			       MalformedJwtException,
-			       SignatureException {
+			throws
+			JwtException {
 		String token = Jwts.builder()
 		                   .subject(jwtObject.getSubject())
 		                   .issuedAt(jwtObject.getIssuedAt())
@@ -34,10 +33,8 @@ public class JWTCreator {
 	}
 
 	public static JWTObject reviewToken(String prefix, String token)
-			throws ExpiredJwtException,
-			       UnsupportedJwtException,
-			       MalformedJwtException,
-			       SignatureException {
+			throws
+			JwtException {
 
 		JWTObject object = new JWTObject();
 		token = token.replace(prefix + " ", "");
