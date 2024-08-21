@@ -24,6 +24,9 @@ public class JWTCreator {
 			throws
 			JwtException {
 		String token = Jwts.builder()
+		                   .header()
+		                   .add("typ", "JWT")
+		                   .and()
 		                   .subject(jwtObject.getSubject())
 		                   .issuedAt(jwtObject.getIssuedAt())
 		                   .expiration(jwtObject.getExpiration())
@@ -47,7 +50,7 @@ public class JWTCreator {
 		object.setSubject(claims.getSubject());
 		object.setIssuedAt(claims.getIssuedAt());
 		object.setExpiration(claims.getExpiration());
-		object.setRoles((List) claims.get(ROLES_AUTHORITIES));
+		object.setRoles(claims.get(ROLES_AUTHORITIES, List.class));
 		return object;
 	}
 
