@@ -1,4 +1,4 @@
-package dev.davi.spring.security.jwt.config.security;
+package dev.davi.spring.security.jwt.config.security.jwt.token;
 
 import io.jsonwebtoken.Jwts;
 import org.springframework.boot.context.properties.ConfigurationProperties;

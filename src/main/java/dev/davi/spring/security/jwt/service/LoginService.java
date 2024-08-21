@@ -1,7 +1,7 @@
 package dev.davi.spring.security.jwt.service;
 
 import dev.davi.spring.security.jwt.config.encode.EncoderConfig;
-import dev.davi.spring.security.jwt.config.security.TokenConfig;
+import dev.davi.spring.security.jwt.config.security.jwt.token.TokenConfig;
 import dev.davi.spring.security.jwt.config.security.jwt.JWTCreator;
 import dev.davi.spring.security.jwt.config.security.jwt.JWTObject;
 import dev.davi.spring.security.jwt.exception.BusinessException;

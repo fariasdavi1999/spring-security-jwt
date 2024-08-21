@@ -1,6 +1,6 @@
 package dev.davi.spring.security.jwt.config.security.jwt;
 
-import dev.davi.spring.security.jwt.config.security.TokenConfig;
+import dev.davi.spring.security.jwt.config.security.jwt.token.TokenConfig;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
