@@ -4,6 +4,7 @@ import dev.davi.spring.security.jwt.config.security.TokenConfig;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.List;
 
@@ -14,6 +15,9 @@ import java.util.List;
 public class JWTCreator {
 	public static final String HEADER_AUTHORIZATION = "Authorization";
 	public static final String ROLES_AUTHORITIES = "authorities";
+
+	@Value("${security.server.url}")
+	private static String issuer;
 
 	private JWTCreator() {
 		throw new IllegalStateException("Cannot initialize");
@@ -27,6 +31,7 @@ public class JWTCreator {
 		                   .header()
 		                   .add("typ", "JWT")
 		                   .and()
+		                   .issuer(issuer)
 		                   .subject(jwtObject.getSubject())
 		                   .issuedAt(jwtObject.getIssuedAt())
 		                   .expiration(jwtObject.getExpiration())
@@ -35,6 +40,7 @@ public class JWTCreator {
 		return prefix + " " + token;
 	}
 
+	// passa pelo filter e revisa o token sempre que faz uma requisição que necessita o seu uso
 	public static JWTObject reviewToken(String prefix, String token)
 			throws
 			JwtException {
@@ -42,6 +48,7 @@ public class JWTCreator {
 		JWTObject object = new JWTObject();
 		token = token.replace(prefix + " ", "");
 		Claims claims = Jwts.parser()
+		                    .requireIssuer(issuer)
 		                    .verifyWith(TokenConfig.getSecretKey())
 		                    .build()
 		                    .parseSignedClaims(token)
